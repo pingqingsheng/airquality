@@ -1,5 +1,51 @@
+### Airquality Pipeline
 
-# Python Project Template
+---
+# airquality
+
+[![codecov](https://codecov.io/gh/pingqingsheng/airquality/branch/main/graph/badge.svg?token=airquality_token_here)](https://codecov.io/gh/pingqingsheng/airquality)
+[![CI](https://github.com/pingqingsheng/airquality/actions/workflows/main.yml/badge.svg)](https://github.com/pingqingsheng/airquality/actions/workflows/main.yml)
+
+Awesome airquality created by pingqingsheng
+
+## Install it from PyPI
+
+```bash
+pip install airquality
+```
+
+## Usage
+
+```py
+from airquality import BaseClass
+from airquality import base_function
+
+BaseClass().base_method()
+base_function()
+```
+
+```bash
+$ python -m airquality
+#or
+$ airquality
+```
+
+## Development
+
+Read the [CONTRIBUTING.md](CONTRIBUTING.md) file.
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- # Python Project Template
 
 A low dependency and really simple to start project template for Python Projects.
 
@@ -48,38 +94,5 @@ See also
 
 [❤️ Sponsor this project](https://github.com/sponsors/rochacbruno/)
 
-<!--  DELETE THE LINES ABOVE THIS AND WRITE YOUR PROJECT README BELOW -->
+ DELETE THE LINES ABOVE THIS AND WRITE YOUR PROJECT README BELOW -->
 
----
-# airquality
-
-[![codecov](https://codecov.io/gh/pingqingsheng/airquality/branch/main/graph/badge.svg?token=airquality_token_here)](https://codecov.io/gh/pingqingsheng/airquality)
-[![CI](https://github.com/pingqingsheng/airquality/actions/workflows/main.yml/badge.svg)](https://github.com/pingqingsheng/airquality/actions/workflows/main.yml)
-
-Awesome airquality created by pingqingsheng
-
-## Install it from PyPI
-
-```bash
-pip install airquality
-```
-
-## Usage
-
-```py
-from airquality import BaseClass
-from airquality import base_function
-
-BaseClass().base_method()
-base_function()
-```
-
-```bash
-$ python -m airquality
-#or
-$ airquality
-```
-
-## Development
-
-Read the [CONTRIBUTING.md](CONTRIBUTING.md) file.
