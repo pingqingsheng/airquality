@@ -1,0 +1,4 @@
+spider:
+  source:   !!str alphavantage
+  save_dir: !!str /data/songzhu/airquality/raw
+  default_symbol_list_path: !!str /data/songzhu/airquality/symbol_list.json
