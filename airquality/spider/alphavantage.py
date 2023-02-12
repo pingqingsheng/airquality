@@ -53,7 +53,7 @@ class AlphaVantageIntraDayExtend():
     
     def create_table(self, database_path: str) -> None:
         
-        os.makedirs(os.path.join(database_path, 'alpha_vantage'), exist_ok=True)
+        os.makedirs(os.path.join(database_path, 'alphavantage'), exist_ok=True)
         
         for k in self.df:
             

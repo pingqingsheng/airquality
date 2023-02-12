@@ -1,7 +1,7 @@
 import click
 import yaml
 
-from spider import Spider
+from .spider.spider import Spider
 
 CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
 
@@ -22,9 +22,9 @@ def _run_spider(*args, **kwargs):
     with open('./default_config.yml') as f:
         config = yaml.safe_load(f)
     f.close()
-    config['spider'].update({k:v for k,v in kwargs.items()})
+    config['spider'].update({k:v for k,v in kwargs.items() if v is not None})
     
     spider = Spider(config)
-    spider.run()
-    
+    spider.download()
+    spider.create_table()
     

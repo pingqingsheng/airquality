@@ -1,0 +1,4 @@
+crawler: 
+  SYMBOL_LIST_PATH: !!str /scr/songzhu/airquality/usstock/symbol_list.json
+
+  
