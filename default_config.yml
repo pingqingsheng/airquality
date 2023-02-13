@@ -2,10 +2,9 @@ spider:
   source:      !!str alphavantage
   save_dir:    !!str /scr/songzhu/airquality/raw
   default_symbol_list_path: !!str /scr/songzhu/airquality/symbol_list.json
-  symbols:     !!seq [GOOG] 
+  symbols:     !!seq [] 
 
   alphavantage: 
     interval:  !!str  1min
     slice:     !!str  year1month1
     adjusted:  !!bool true
-    api:       !!str  demo

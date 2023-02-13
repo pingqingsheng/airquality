@@ -8,6 +8,7 @@ import requests
 import pandas as pd
 import numpy as np
 import json
+from tqdm import tqdm
 
 class AlphaVantageIntraDayExtend():
     
@@ -40,25 +41,31 @@ class AlphaVantageIntraDayExtend():
         
         with requests.Session() as s:
             
-            for _api in self.api_url_list: 
+            for _api in (pbar := tqdm(self.api_url_list, ncols=100)): 
                 
                 download = s.get(_api)
                 decoded_content = download.content.decode('utf-8')
                 cr = list(csv.reader(decoded_content.splitlines(), delimiter=','))
                 symbol_dict = {x[0]:list(x[1:]) for x in zip(*cr)}
                 
-                symbol = re.findall(re.compile('.*symbol=([a-zA-Z]+)&.*'), _api)[0]
-                self.df[symbol] = symbol_dict
-    
+                find_symbol = re.findall(re.compile('.*symbol=([a-zA-Z]+)&.*'), _api)
+                if len(find_symbol):
+                    symbol = find_symbol[0]
+                    self.df[symbol] = symbol_dict
+                    pbar.set_description(f"{symbol}")
     
     def create_table(self, database_path: str) -> None:
         
-        os.makedirs(os.path.join(database_path, 'alphavantage'), exist_ok=True)
+        source_dir = os.path.join(database_path, 'alphavantage')
+        os.makedirs(source_dir, exist_ok=True)
         
         for k in self.df:
             
-            table_name = f"{k}_{self.interval}_{self.slice}.json"
+            asset_dir = os.path.join(source_dir, k, self.interval)
+            os.makedirs(asset_dir, exist_ok=True)
             
-            with open(os.path.join(database_path, table_name), 'w') as f: 
+            table_name = f"{self.slice}.json"
+            
+            with open(os.path.join(asset_dir, table_name), 'w') as f: 
                 json.dump(self.df[k], f, sort_keys=True, indent=4)
             f.close()

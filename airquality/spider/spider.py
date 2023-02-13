@@ -15,11 +15,11 @@ class Spider():
             symbols_list = config['spider']['symbols']
         else:
             with open(config['spider']['default_symbol_list_path']) as f:
-                symbols_list = json.safe_load(f)
+                symbols_list = json.load(f)
             f.close()
-            symbols_list = symbols_list['symbols']
+            symbols_list = symbols_list['Symbol']
         
-        save_dir = config['spider']['save_dir']
+        self.save_dir = config['spider']['save_dir']
     
         self.config = config
         self.source = config['spider']['source']
@@ -32,7 +32,7 @@ class Spider():
                     interval=config['spider']['alphavantage']['interval'], 
                     slice=config['spider']['alphavantage']['slice'], 
                     adjusted=config['spider']['alphavantage']['adjusted'], 
-                    api=config['spider']['alphavantage']['api']
+                    api=input("Input your AlphaVantage AIP: ")
                 )
         
     def download(self) -> None:
@@ -40,3 +40,4 @@ class Spider():
     
     def create_table(self) -> None:
         self.spider.create_table(database_path=self.config['spider']['save_dir'])
+        print(f'Raw Data Saved to {self.save_dir}')

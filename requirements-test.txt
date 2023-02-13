@@ -9,3 +9,7 @@ codecov
 mypy
 gitchangelog
 mkdocs
+requests
+pyyaml
+json
+
